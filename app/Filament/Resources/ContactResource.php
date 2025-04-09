@@ -36,18 +36,15 @@ class ContactResource extends Resource
                     ->maxLength(255),
 
                 TextInput::make('email')
-                    ->label('Email')
                     ->email()
                     ->required()
                     ->unique(ignoreRecord: true),
 
                 TextInput::make('phone')
-                    ->label('Telefone')
                     ->tel()
                     ->maxLength(15),
 
                 Textarea::make('notes')
-                    ->label('Anotações')
                     ->maxLength(500),
 
             ]);

@@ -1,3 +1,6 @@
 {
-  "Contacts": "Contatos"
+  "Contacts": "Contatos",
+  "Name": "Nome",
+  "Phone": "Telefone",
+  "Notes": "Notas"
 }
