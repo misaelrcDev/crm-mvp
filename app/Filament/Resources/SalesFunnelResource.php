@@ -20,6 +20,11 @@ class SalesFunnelResource extends Resource
 {
     protected static ?string $model = SalesFunnel::class;
 
+    public static function getModelLabel(): string
+    {
+        return __('Sales Funnel');
+    }
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

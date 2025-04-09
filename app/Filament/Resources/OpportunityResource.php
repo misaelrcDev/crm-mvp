@@ -21,6 +21,11 @@ class OpportunityResource extends Resource
 {
     protected static ?string $model = Opportunity::class;
 
+    public static function getModelLabel(): string
+    {
+        return __('Oportunidades');
+    }
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
