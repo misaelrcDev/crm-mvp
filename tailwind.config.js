@@ -1,10 +1,18 @@
-import preset from './vendor/filament/support/tailwind.config.preset'
+// tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
 
-export default {
-    presets: [preset],
-    content: [
-        './app/Filament/**/*.php',
-        './resources/views/filament/**/*.blade.php',
-        './vendor/filament/**/*.blade.php',
-    ],
-}
+module.exports = {
+  content: [
+    './resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.vue',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
+  plugins: [],
+};

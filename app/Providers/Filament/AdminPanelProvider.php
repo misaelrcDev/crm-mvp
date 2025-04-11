@@ -41,7 +41,12 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->registration()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#2ECC71', // Verde Escuro
+                'secondary' => '#F5F5F5', // Cinza Claro
+                'success' => '#58D68D', // Verde Claro
+                'danger' => '#E74C3C', // Vermelho
+                'warning' => '#F39C12', // Laranja
+
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
