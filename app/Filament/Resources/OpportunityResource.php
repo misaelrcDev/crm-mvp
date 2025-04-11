@@ -26,7 +26,7 @@ class OpportunityResource extends Resource
         return __('Oportunidades');
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
 
     public static function form(Form $form): Form
     {
@@ -71,6 +71,9 @@ class OpportunityResource extends Resource
                     ->sortable()
                     ->searchable(),
 
+                TextColumn::make('contact.name')
+                    ->label('Contato'),
+
                 TextColumn::make('value')
                     ->label('Valor (R$)')
                     ->money('BRL'),
@@ -84,6 +87,7 @@ class OpportunityResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
