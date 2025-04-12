@@ -10,6 +10,8 @@ class ListOpportunities extends ListRecords
 {
     protected static string $resource = OpportunityResource::class;
 
+    protected static ?string $title = ' ';
+
     protected function getHeaderActions(): array
     {
         return [
