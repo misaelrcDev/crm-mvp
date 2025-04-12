@@ -10,6 +10,8 @@ class ListStages extends ListRecords
 {
     protected static string $resource = StageResource::class;
 
+    protected static ?string $title = ' ';
+
     protected function getHeaderActions(): array
     {
         return [
