@@ -20,6 +20,13 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
+    protected static ?string $slug = 'contatos';
+
+    public function getTitle(): string
+    {
+        return '';
+    }
+
     public static function getModelLabel(): string
     {
         return __('Contacts');
