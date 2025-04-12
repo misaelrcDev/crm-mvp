@@ -10,6 +10,8 @@ class ListSalesFunnels extends ListRecords
 {
     protected static string $resource = SalesFunnelResource::class;
 
+    protected static ?string $title = ' ';
+
     protected function getHeaderActions(): array
     {
         return [
