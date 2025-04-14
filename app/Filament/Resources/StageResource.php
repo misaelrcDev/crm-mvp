@@ -54,6 +54,10 @@ class StageResource extends Resource
                     ->numeric()
                     ->minValue(1)
                     ->step(1),
+
+                Forms\Components\Hidden::make('user_id')
+                    ->default(Auth::id())
+                    ->required(),
             ]);
     }
 

@@ -46,6 +46,10 @@ class SalesFunnelResource extends Resource
                     ->label('Descrição')
                     ->maxLength(500)
                     ->placeholder('Breve descrição sobre o funil de vendas'),
+
+                Forms\Components\Hidden::make('user_id')
+                    ->default(Auth::id())
+                    ->required(),
             ]);
     }
 

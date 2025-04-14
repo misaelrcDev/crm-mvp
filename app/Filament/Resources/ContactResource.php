@@ -60,6 +60,10 @@ class ContactResource extends Resource
                 Textarea::make('notes')
                     ->maxLength(500),
 
+                Forms\Components\Hidden::make('user_id')
+                    ->default(Auth::id())
+                    ->required(),
+
             ]);
     }
 

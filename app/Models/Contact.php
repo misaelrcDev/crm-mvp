@@ -16,4 +16,13 @@ class Contact extends Model
         'notes',
         'user_id'
     ];
+
+    public function opportunities()
+    {
+        return $this->hasMany(Opportunity::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

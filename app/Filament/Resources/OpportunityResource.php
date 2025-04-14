@@ -62,6 +62,10 @@ class OpportunityResource extends Resource
                 Textarea::make('note')
                     ->label('Anotações')
                     ->maxLength(500),
+
+                Forms\Components\Hidden::make('user_id')
+                    ->default(Auth::id())
+                    ->required(),
             ]);
     }
 
