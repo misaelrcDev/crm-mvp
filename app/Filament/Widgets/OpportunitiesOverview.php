@@ -4,26 +4,36 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class OpportunitiesOverview extends ChartWidget
 {
-    protected static ?string $heading = 'Oportunidades';
+    protected static ?string $heading = 'Resumo de Oportunidades por Estágio';
 
     protected function getData(): array
     {
+        $userId = Auth::id();
+
+        $dataContatoInicial = \App\Models\Opportunity::where('user_id', $userId)
+            ->whereHas('stage', function (Builder $query) {
+                $query->where('name', 'Contato Inicial');
+            })
+            ->count();
+
+        $dataPropostaEnviada = \App\Models\Opportunity::where('user_id', $userId)
+            ->whereHas('stage', function (Builder $query) {
+                $query->where('name', 'Proposta Enviada');
+            })
+            ->count();
+
         return [
             'datasets' => [
                 [
                     'label' => 'Oportunidades',
-                    'data' => [
-                        \App\Models\Opportunity::where('stage_id', 1)->count(),
-                        \App\Models\Opportunity::where('stage_id', 2)->count(),
-                        // \App\Models\Opportunity::where('status', 'Aberto')->count(),
-                    ],
+                    'data' => [$dataContatoInicial, $dataPropostaEnviada],
                 ],
             ],
             'labels' => ['Contato Inicial', 'Proposta Enviada'],
-
         ];
     }
 
