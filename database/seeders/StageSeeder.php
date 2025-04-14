@@ -17,18 +17,21 @@ class StageSeeder extends Seeder
             'sales_funnel_id' => 1, // Funil de Produtos
             'name' => 'Contato Inicial',
             'order' => 1,
+            'user_id' => 1,
         ]);
 
         Stage::create([
             'sales_funnel_id' => 1,
             'name' => 'Proposta Enviada',
             'order' => 2,
+            'user_id' => 1,
         ]);
 
         Stage::create([
             'sales_funnel_id' => 2, // Funil de Consultoria
             'name' => 'Contato Inicial',
             'order' => 1,
+            'user_id' => 1,
         ]);
 
     }

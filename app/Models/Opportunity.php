@@ -11,7 +11,8 @@ class Opportunity extends Model
         'value',
         'notes',
         'stage_id',
-        'contact_id'
+        'contact_id',
+        'user_id'
     ];
 
     public function stage()

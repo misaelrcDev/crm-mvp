@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'notes' => $this->faker->sentence(),
-
+            'user_id' => \App\Models\User::factory()->create()->id, // Assuming you have a User factory
         ];
     }
 }

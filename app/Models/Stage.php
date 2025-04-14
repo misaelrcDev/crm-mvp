@@ -9,7 +9,8 @@ class Stage extends Model
     protected $fillable = [
         'name',
         'order',
-        'sales_funnel_id'
+        'sales_funnel_id',
+        'user_id'
     ];
 
     public function salesFunnel()

@@ -16,11 +16,13 @@ class SalesFunnelSeeder extends Seeder
         SalesFunnel::create([
             'name' => 'Venda de Produtos',
             'description' => 'Processo para venda de produtos premium.',
+            'user_id' => 1,
         ]);
 
         SalesFunnel::create([
             'name' => 'Consultoria Empresarial',
             'description' => 'Funil para serviços de consultoria.',
+            'user_id' => 1,
         ]);
 
     }

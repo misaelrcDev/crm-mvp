@@ -19,6 +19,7 @@ class OpportunitySeeder extends Seeder
             'title' => 'Venda de Software XYZ',
             'value' => 1500.00,
             'notes' => 'Cliente interessado em planos anuais.',
+            'user_id' => 1,
         ]);
 
         Opportunity::create([
@@ -27,6 +28,7 @@ class OpportunitySeeder extends Seeder
             'title' => 'Consultoria Financeira',
             'value' => 3000.00,
             'notes' => 'Cliente quer orçamento detalhado.',
+            'user_id' => 1,
         ]);
 
     }
