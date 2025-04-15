@@ -38,19 +38,38 @@ class StageResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('sales_funnel_id')
-                    ->relationship('salesFunnel', 'name')
-                    ->label('Funil de Vendas')
-                    ->required(),
+                // Select::make('sales_funnel_id')
+                //     ->relationship('salesFunnel', 'name')
+                //     ->label('Funil de Vendas')
+                //     ->required(),
 
-                TextInput::make('name')
+                Select::make('name')
                     ->label('Nome do Estágio')
+                    ->options([
+                        'Contato Inicial' => 'Contato Inicial',
+                        'Proposta Enviada' => 'Proposta Enviada',
+                        'Negociação' => 'Negociação',
+                        'Fechado (Ganho)' => 'Fechado (Ganho)',
+                        'Fechado (Perdido)' => 'Fechado (Perdido)',
+                    ])
                     ->required()
-                    ->maxLength(255),
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        // Ajusta automaticamente a ordem com base no estágio selecionado
+                        $set('order', match ($state) {
+                            'Contato Inicial' => 1,
+                            'Proposta Enviada' => 2,
+                            'Negociação' => 3,
+                            'Fechado (Ganho)' => 4,
+                            'Fechado (Perdido)' => 5,
+                            default => null,
+                        });
+                    }),
+
 
                 TextInput::make('order')
                     ->label('Ordem')
-                    ->required()
+                    ->hiddenOn(['edit', 'create'])
                     ->numeric()
                     ->minValue(1)
                     ->step(1),
@@ -65,9 +84,9 @@ class StageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('salesFunnel.name')
-                    ->label('Funil de Vendas')
-                    ->sortable(),
+                // TextColumn::make('salesFunnel.name')
+                //     ->label('Funil de Vendas')
+                //     ->sortable(),
 
                 TextColumn::make('name')
                     ->label('Nome do Estágio')
@@ -77,21 +96,21 @@ class StageResource extends Resource
                 TextColumn::make('order')
                     ->label('Ordem'),
 
-                TextColumn::make('created_at')
-                    ->label('Criado em')
-                    ->dateTime('d/m/y H:i')
+                // TextColumn::make('created_at')
+                //     ->label('Criado em')
+                //     ->dateTime('d/m/y H:i')
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
@@ -102,6 +121,15 @@ class StageResource extends Resource
         ];
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(fn ($stage) => false); // Impede edições
+        static::deleting(fn ($stage) => false); // Impede exclusões
+    }
+
+
     public static function getPages(): array
     {
         return [
@@ -110,4 +138,5 @@ class StageResource extends Resource
             'edit' => Pages\EditStage::route('/{record}/edit'),
         ];
     }
+
 }

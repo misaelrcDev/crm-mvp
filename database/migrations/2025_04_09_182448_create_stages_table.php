@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('order');
+            $table->string('name')->unique();
+            $table->integer('order')->unique();
             $table->timestamps();
 
             $table->foreignId('sales_funnel_id')->constrained()->onDelete('cascade');

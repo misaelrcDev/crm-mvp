@@ -16,25 +16,40 @@ class OpportunitiesOverview extends ChartWidget
         $userId = Auth::id();
 
         $dataContatoInicial = \App\Models\Opportunity::where('user_id', $userId)
-            ->whereHas('stage', function (Builder $query) {
-                $query->where('name', 'Contato Inicial');
-            })
-            ->count();
+        ->whereHas('stage', fn(Builder $query) => $query->where('name', 'Contato Inicial'))
+        ->count();
 
         $dataPropostaEnviada = \App\Models\Opportunity::where('user_id', $userId)
-            ->whereHas('stage', function (Builder $query) {
-                $query->where('name', 'Proposta Enviada');
-            })
+            ->whereHas('stage', fn(Builder $query) => $query->where('name', 'Proposta Enviada'))
+            ->count();
+
+        $dataNegociacao = \App\Models\Opportunity::where('user_id', $userId)
+            ->whereHas('stage', fn(Builder $query) => $query->where('name', 'Negociação'))
+            ->count();
+
+        $dataFechadoGanho = \App\Models\Opportunity::where('user_id', $userId)
+            ->whereHas('stage', fn(Builder $query) => $query->where('name', 'Fechado (Ganho)'))
+            ->count();
+
+        $dataFechadoPerdido = \App\Models\Opportunity::where('user_id', $userId)
+            ->whereHas('stage', fn(Builder $query) => $query->where('name', 'Fechado (Perdido)'))
             ->count();
 
         return [
             'datasets' => [
                 [
                     'label' => 'Oportunidades',
-                    'data' => [$dataContatoInicial, $dataPropostaEnviada],
+                    'data' =>
+                    [
+                        $dataContatoInicial,
+                        $dataPropostaEnviada,
+                        $dataNegociacao,
+                        $dataFechadoGanho,
+                        $dataFechadoPerdido
+                    ],
                 ],
             ],
-            'labels' => ['Contato Inicial', 'Proposta Enviada'],
+            'labels' => ['Contato Inicial', 'Proposta Enviada', 'Negociação', 'Fechado (Ganho)', 'Fechado (Perdido)'],
         ];
     }
 
