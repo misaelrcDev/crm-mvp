@@ -12,6 +12,7 @@ class Opportunity extends Model
         'notes',
         'stage_id',
         'contact_id',
+        'sales_funnel_id',
         'user_id'
     ];
 
@@ -27,5 +28,10 @@ class Opportunity extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function salesFunnel()
+    {
+        return $this->belongsTo(SalesFunnel::class);
     }
 }

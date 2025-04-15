@@ -59,6 +59,12 @@ class OpportunityResource extends Resource
                     ->required()
                     ->prefix('R$'),
 
+                Select::make('sales_funnel_id')
+                    ->label('Funil de Vendas')
+                    ->options(\App\Models\SalesFunnel::pluck('name', 'id'))
+                    ->required()
+                    ->searchable(),
+
                 Textarea::make('note')
                     ->label('Anotações')
                     ->maxLength(500),
