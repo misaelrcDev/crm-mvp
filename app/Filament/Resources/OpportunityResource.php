@@ -96,7 +96,7 @@ class OpportunityResource extends Resource
 
                 TextColumn::make('created_at')
                     ->label('Criado em')
-                    ->dateTime('d/m/Y H:i'),
+                    ->dateTime('d/m/Y'),
             ])
             ->filters([
                 //
