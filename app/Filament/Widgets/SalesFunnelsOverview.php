@@ -10,6 +10,7 @@ use Filament\Widgets\ChartWidget;
 class SalesFunnelsOverview extends ChartWidget
 {
     protected static ?string $heading = 'Oportunidades por Funil de Vendas';
+    //dimnuir o tamanho do gráfico
 
     protected function getData(): array
     {
