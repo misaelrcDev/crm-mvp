@@ -11,6 +11,8 @@ class OpportunitiesOverview extends ChartWidget
 {
     protected static ?string $heading = 'Resumo de Oportunidades por Estágio';
 
+    protected int | string | array $columnSpan = (['md' => 2, 'lg' => 0]);
+
     protected function getData(): array
     {
         $userId = Auth::id();

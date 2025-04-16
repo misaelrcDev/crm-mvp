@@ -10,13 +10,16 @@ use Filament\Widgets\ChartWidget;
 class SalesFunnelsOverview extends ChartWidget
 {
     protected static ?string $heading = 'Oportunidades por Funil de Vendas';
-    //dimnuir o tamanho do gráfico
 
+    protected int | string | array $columnSpan = (['md' => 1, 'lg' => 0]);
+
+    // protected static string $view = 'filament.widgets.sales-funnels-overview';
+
+    
     protected function getData(): array
     {
 
         $funnels = SalesFunnel::pluck('name', 'id')->toArray();
-        $salesFunnels = SalesFunnel::all();
         $data = [];
 
 
