@@ -13,9 +13,11 @@ class SalesFunnelsOverview extends ChartWidget
 
     protected int | string | array $columnSpan = (['md' => 1, 'lg' => 0]);
 
+    protected static ?int $sort = 3;
+
     // protected static string $view = 'filament.widgets.sales-funnels-overview';
 
-    
+
     protected function getData(): array
     {
 

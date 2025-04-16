@@ -13,6 +13,8 @@ class OpportunitiesOverview extends ChartWidget
 
     protected int | string | array $columnSpan = (['md' => 2, 'lg' => 0]);
 
+    protected static ?int $sort = 2;
+
     protected function getData(): array
     {
         $userId = Auth::id();
